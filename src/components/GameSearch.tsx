@@ -18,15 +18,18 @@ function GameSearch({}: Props) {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        type="search"
-        {...register("gameSearch")}
-        placeholder="Search for a game"
-      />
+    <div className="my-3 flex flex-row justify-center">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          type="search"
+          {...register("gameSearch")}
+          placeholder="Search for a game"
+          className="mr-1 w-96 rounded p-0.5"
+        />
 
-      <input type="submit" />
-    </form>
+        <input type="submit" className="rounded bg-slate-400 p-0.5" />
+      </form>
+    </div>
   );
 }
 
