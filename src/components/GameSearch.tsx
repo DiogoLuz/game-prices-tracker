@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
+import { GameContext } from "@/context/GameContext";
+import { GameContextType } from "@/context/GameContext";
 
 type Props = {};
 
@@ -9,6 +12,7 @@ type Inputs = {
 };
 
 function GameSearch({}: Props) {
+  const { gameList, setGameList }: GameContextType = useContext(GameContext);
   const {
     register,
     handleSubmit,
@@ -21,6 +25,7 @@ function GameSearch({}: Props) {
         `https://www.cheapshark.com/api/1.0/games?title=${gameSearch}`
       );
       const searchResponse = await searchRequest.json();
+      setGameList(searchResponse);
       console.log(searchResponse);
     } catch (error) {
       console.log(error);
