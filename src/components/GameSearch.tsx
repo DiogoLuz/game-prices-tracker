@@ -2,9 +2,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Dispatch, SetStateAction } from "react";
 
-type Props = {
-  setGames: Dispatch<SetStateAction<object[] | undefined>>;
-};
+type Props = {};
 
 type Inputs = {
   gameSearch: string;
