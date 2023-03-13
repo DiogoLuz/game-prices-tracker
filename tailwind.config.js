@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         bgBlue: "#2C3333",
+        navbarbgColor: "#2E4F4F",
       },
     },
   },
