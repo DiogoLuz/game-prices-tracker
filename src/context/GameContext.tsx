@@ -7,7 +7,7 @@ type Props = { children: ReactNode };
 
 export interface GameContextType {
   gameList: Game[];
-  setGameList: React.Dispatch<React.SetStateAction<[]>>;
+  setGameList: React.Dispatch<React.SetStateAction<Game[]>>;
 }
 
 export interface Game {
@@ -21,7 +21,7 @@ export interface Game {
 }
 
 export function AppWrapper({ children }: Props) {
-  const [gameList, setGameList] = useState<[]>([]);
+  const [gameList, setGameList] = useState<Game[]>([]);
   return (
     <GameContext.Provider value={{ gameList, setGameList }}>
       {children}
