@@ -32,7 +32,16 @@ function GameCard({ game }: Props) {
         {/* // Use text-white utility to change the text color */}
         <h3 className="text-md text-white">{game.external}</h3>
         <Link href={`/games/${game.internalName.toLowerCase()}`}>
-          <button className="rounded border-2 border-white bg-sky-600 p-1 text-white hover:bg-sky-900">
+          <button
+            className="rounded border-2 border-white bg-sky-600 p-1 text-white hover:bg-sky-900"
+            onClick={() => {
+              const filteredGame = gameList.filter((otherGame) => {
+                return otherGame.internalName === game.internalName;
+              });
+
+              setGameList(filteredGame);
+            }}
+          >
             See the deals
           </button>
         </Link>
