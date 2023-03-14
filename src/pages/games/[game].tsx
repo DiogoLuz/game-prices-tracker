@@ -16,7 +16,9 @@ const Game: NextPage<Props> = ({}) => {
       <Navbar />
       <main>
         <header>
-          <h1>{gameList[0].external}</h1>
+          <h2 className="mt-4 text-center text-2xl text-white">
+            {gameList[0].external}
+          </h2>
         </header>
       </main>
     </div>
