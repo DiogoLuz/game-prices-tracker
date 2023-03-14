@@ -3,33 +3,34 @@ import { useContext } from "react";
 import { GameContext } from "@/context/GameContext";
 import { GameContextType } from "@/context/GameContext";
 import Image from "next/image";
+import { Game } from "@/context/GameContext";
 
-type Props = {};
+type Props = { game: Game };
 
-function GameCard({}: Props) {
+function GameCard({ game }: Props) {
   const { gameList, setGameList } = useContext(GameContext);
-  console.log(gameList[0]?.thumb);
+  console.log(game.thumb);
   return (
-    <div className="h-1/2 w-1/4 rounded border-4 border-white bg-black">
-      <div
-        className="w-100% relative h-1/2 border-b-4 bg-black"
-        id="image-section"
-      >
-        {gameList[0]?.thumb && (
+    // Use flex and flex-col utilities to create a card container
+    <div className="flex max-w-sm flex-col overflow-hidden rounded bg-black shadow-lg">
+      {/* // Use relative and h-48 utilities to create an image section */}
+      <div className="relative h-48" id="image-section">
+        {/* // Use absolute and inset-0 utilities to position the image */}
+        {game.thumb && (
           <Image
-            src={gameList[0]?.thumb}
-            alt={gameList[0]?.internalName}
+            src={game.thumb}
+            alt={game.internalName}
             style={{ objectFit: "cover" }}
-            className="h-1/4 w-1/4"
+            className="absolute inset-0"
             fill={true}
           />
         )}
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <h3 className="text-md text-white">{gameList[0]?.external}</h3>
-        <p className="text-sm text-white">
-          Cheapest Price: {gameList[0]?.cheapest}
-        </p>
+      {/* // Use p-4 utility to add padding to the content section */}
+      <div className="p-4">
+        {/* // Use text-white utility to change the text color */}
+        <h3 className="text-md text-white">{game.external}</h3>
+        <p className="text-sm text-white">Cheapest Price: {game.cheapest}</p>
       </div>
     </div>
   );
