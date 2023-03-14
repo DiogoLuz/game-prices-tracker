@@ -5,10 +5,13 @@ import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/Navbar";
 import GameSearch from "@/components/GameSearch";
 import GameCard from "@/components/GameCard";
+import { useContext } from "react";
+import { GameContext } from "@/context/GameContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { gameList, setGameList } = useContext(GameContext);
   return (
     <>
       <Head>
@@ -20,7 +23,11 @@ export default function Home() {
       <main className="h-screen w-screen">
         <Navbar />
         <GameSearch />
-        <GameCard />
+        <div className="grid grid-cols-4 gap-4">
+          {gameList.map((game) => {
+            return <GameCard game={game} key={game.internalName} />;
+          })}
+        </div>
       </main>
     </>
   );
